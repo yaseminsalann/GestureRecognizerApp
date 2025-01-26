@@ -92,3 +92,9 @@ draggableView.isUserInteractionEnabled = true özelliği, sürükleme işlemini 
 Hareketin Sürekli Güncellenmesi:
 sender.translation(in:) her hareket ettiğinde, kullanıcının o anki sürükleme mesafesini verir.
 Bu değer, birikim olmaması için her seferinde sıfırlanır.
+
+Kullanım Alanları
+Sürüklenebilir Nesneler:Kullanıcının bir nesneyi ekran üzerinde istediği konuma sürüklemesine olanak tanır.
+Oyunlar:Karakter kontrolü veya nesne hareketleri için.
+Animasyonlar:Kullanıcı hareketlerini taklit eden özel animasyon efektleri.
+Scroll veya Panning:İçerik kaydırma veya büyük bir alanı ekranda gezmek için.
