@@ -60,7 +60,7 @@ class ViewController: UIViewController {
     
     @IBAction func rotationGestureRecognizerButton(_ sender: Any) {
         // Görüntü oluştur ve ekle
-        imageView = UIImageView(image: UIImage(named: "sakura"))
+        imageView.image = UIImage(named: "sakura")
         imageView.isUserInteractionEnabled = true // Gesture'ları algılamak için gerekli
         imageView.contentMode = .scaleAspectFit
         imageView.frame = CGRect(x: 100, y: 200, width: 200, height: 200)
@@ -160,7 +160,8 @@ class ViewController: UIViewController {
         let edgePanGesture = UIScreenEdgePanGestureRecognizer(target: self, action: #selector(handleEdgePan(_:)))
         edgePanGesture.edges = .left // Sol kenardan algıla
         view.addGestureRecognizer(edgePanGesture)
-        /*Edges Özelliği:
+        /*
+         Edges Özelliği:
          edges parametresi, hangi kenarın gesture hareketini algılayacağını belirtir:
          .left: Sol kenar.
          .right: Sağ kenar.
