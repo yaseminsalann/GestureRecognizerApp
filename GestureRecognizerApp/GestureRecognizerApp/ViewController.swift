@@ -83,7 +83,26 @@ class ViewController: UIViewController {
     
     
     @IBAction func swipeGestureRecognizerButton(_ sender: Any) {
-        
+        // Sağa kaydırma
+           let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipe(_:)))
+           swipeRight.direction = .right
+           view.addGestureRecognizer(swipeRight)
+
+           // Sola kaydırma
+           let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipe(_:)))
+           swipeLeft.direction = .left
+           view.addGestureRecognizer(swipeLeft)
+        /*
+         Gesture Tanımlama:
+         UISwipeGestureRecognizer bir hedef ve bir aksiyon ile oluşturulur.
+         target: Gesture hareketini işleyecek sınıf (genellikle self).
+         action: Gesture algılandığında tetiklenecek metod.
+         Yön Belirleme:
+         direction özelliği kullanılarak gesture’ın algılayacağı yön belirtilir. Varsayılan yön .right (sağa doğru kaydırma) olarak ayarlanmıştır.
+         Diğer yönler: .left, .up, .down.
+         Gesture'ı Bir View'e Eklemek:
+         Gesture, hangi view üzerinde çalışmasını istiyorsanız o view'e eklenir (view.addGestureRecognizer(...)).
+         */
     }
     
     @IBAction func panGestureRecognizerButton(_ sender: Any) {
@@ -127,5 +146,14 @@ class ViewController: UIViewController {
            // Gesture'ın rotation değerini sıfırla
            sender.rotation = 0
        }
+    @objc func handleSwipe(_ sender: UISwipeGestureRecognizer) {
+        switch sender.direction {
+        case .right:
+            print("Sağa kaydırma algılandı!")
+        case .left:
+            print("Sola kaydırma algılandı!")
+        default:
+            break
+        }
 }
 
