@@ -15,6 +15,7 @@ class ViewController: UIViewController {
     
     var isSakura = true
     var draggableView: UIView!
+    var longPressView: UIView!
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -128,6 +129,27 @@ class ViewController: UIViewController {
     }
     
     @IBAction func longPressGestureRecognizerButton(_ sender: Any) {
+        // Uzun basma hareketine duyarlı bir view oluştur
+        longPressView = UIView(frame: CGRect(x: 100, y: 200, width: 150, height: 150))
+        longPressView.backgroundColor = .blue
+        view.addSubview(longPressView)
+
+        // UILongPressGestureRecognizer oluştur ve hedef aksiyon ekle
+        let longPressGesture = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPress(_:)))
+        longPressGesture.minimumPressDuration = 1.0 // Basılı tutma süresi (1 saniye)
+        longPressView.addGestureRecognizer(longPressGesture)
+        /*
+         minimumPressDuration:
+         Kullanıcının view üzerinde ne kadar süre basılı tutması gerektiğini belirler. Varsayılan değer 0.5 saniyedir.
+         longPressGesture.minimumPressDuration = 2.0 ile bu süre 2 saniye olarak ayarlanabilir.
+         state Özelliği:
+         Gesture'ın durumunu belirtir:
+         .began: Kullanıcı uzun basma hareketine başladı.
+         .changed: Kullanıcı parmağını hareket ettiriyor ancak hala basılı tutuyor.
+         .ended: Kullanıcı parmağını kaldırdı (gesture tamamlandı).
+         Gesture'ın Tanımlandığı View:
+         Gesture'ın çalışacağı bir view belirlenmelidir ve bu view'in isUserInteractionEnabled özelliği true olmalıdır (varsayılan olarak true'dur).
+         */
     }
     
     @IBAction func screenEdgePanGestureRecognizerButton(_ sender: Any) {
@@ -189,6 +211,17 @@ class ViewController: UIViewController {
             // View'i sınırlar içinde hareket ettir
             draggedView.center = CGPoint(x: newX, y: newY)
             sender.setTranslation(.zero, in: view)
+        }
+    @objc func handleLongPress(_ sender: UILongPressGestureRecognizer) {
+            if sender.state == .began {
+                // Gesture başladı (basılı tutuldu)
+                longPressView.backgroundColor = .red
+                print("Uzun basma algılandı!")
+            } else if sender.state == .ended {
+                // Gesture sona erdi (parmak kaldırıldı)
+                longPressView.backgroundColor = .blue
+                print("Uzun basma sona erdi!")
+            }
         }
 
 }
