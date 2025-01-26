@@ -77,3 +77,18 @@ Diğer yönler: .left, .up, .down.
 
 Gesture'ı Bir View'e Eklemek:
 Gesture, hangi view üzerinde çalışmasını istiyorsanız o view'e eklenir (view.addGestureRecognizer(...)).
+
+UIPanGestureRecognizer, Swift'te bir view üzerinde sürükleme (drag) hareketlerini algılamak için kullanılır. Kullanıcı, bir veya daha fazla parmakla bir view'i sürüklerken bu gesture çalışır. Sürükleme işlemi, genellikle view'i ekranda bir noktadan başka bir noktaya taşımak için kullanılır.
+
+Açıklamalar
+UIPanGestureRecognizer Tanımlama:UIPanGestureRecognizer, sürükleme hareketlerini algılamak için kullanılır.
+
+translation(in:): Sürükleme hareketindeki yer değişimini (x ve y) belirtir.
+sender.setTranslation(.zero, in:): Yeni çeviri değerini sıfırlayarak view'in birikimli hareket etmesini engeller.
+
+View’in Sürüklenebilirliği:
+draggableView.isUserInteractionEnabled = true özelliği, sürükleme işlemini mümkün kılar. Ancak UIView için bu özellik varsayılan olarak zaten truedur.
+
+Hareketin Sürekli Güncellenmesi:
+sender.translation(in:) her hareket ettiğinde, kullanıcının o anki sürükleme mesafesini verir.
+Bu değer, birikim olmaması için her seferinde sıfırlanır.
