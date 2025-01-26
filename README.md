@@ -120,3 +120,26 @@ Seçim İşlemleri:Uzun basma ile bir öğeyi seçmek veya düzenleme moduna ge�
 Menü Açma:Uzun basma hareketi ile bir menü veya eylem listesi açmak.
 Etkileşimli Animasyonlar:Uzun basma hareketiyle görsel efektler veya geçişler başlatmak.
 Sürükleme:Uzun süre basılı tutarak bir öğeyi sürüklemek.
+
+UIScreenEdgePanGestureRecognizer, Swift'te bir view'in ekranın kenarından başlayan sürükleme (pan) hareketlerini algılamak için kullanılan bir gesture recognizer'dır. Bu gesture genellikle kenardan kaydırma hareketiyle bir menü, kontrol paneli veya başka bir işlemi başlatmak için kullanılır.
+
+Açıklamalar
+Edges Özelliği:
+edges parametresi, hangi kenarın gesture hareketini algılayacağını belirtir:
+.left: Sol kenar.
+.right: Sağ kenar.
+.top: Üst kenar.
+.bottom: Alt kenar.
+Örneğin, sağ kenardan algılamak için edgePanGesture.edges = .right ayarlanabilir.
+Hareket Durumu:
+Gesture recognizer'ın durumunu kontrol etmek için sender.state kullanılır:
+.began: Gesture başladı.
+.changed: Kullanıcı sürüklemeye devam ediyor.
+.recognized veya .ended: Gesture tamamlandı.
+Kullanılabilirlik:
+Bu gesture yalnızca ekranın belirli bir kenarından başlatılan hareketleri algılar. Diğer alanlarda bu hareket algılanmaz.
+
+Kullanım Alanları
+Menü Açma ve Kapatma:Kenardan kaydırarak bir navigasyon menüsü açabilirsiniz.
+Sayfa Geçişleri:Sağ veya sol kenardan kaydırma ile bir sonraki veya önceki sayfaya geçiş.
+Özel Kontroller:Kenardan yapılan hareketlerle özelleştirilmiş kullanıcı etkileşimleri.
