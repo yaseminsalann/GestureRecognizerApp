@@ -16,3 +16,27 @@ Kullanım Alanları
 UI bileşenleri üzerinde tıklama, kaydırma gibi kullanıcı hareketlerini işlemek.
 Daha doğal ve sezgisel bir kullanıcı deneyimi oluşturmak.
 Özelleştirilmiş hareketler tasarlamak (örneğin, oyunlarda veya özel animasyonlarda).
+
+UIPinchGestureRecognizer, Swift'te bir nesnenin yakınlaştırılması veya uzaklaştırılması için kullanılan iki parmakla yapılan kıstırma hareketlerini algılamanızı sağlar. Özellikle fotoğraf galerisi uygulamalarında görüntüleri büyütmek/küçültmek için yaygın olarak kullanılır.
+
+Açıklamalar
+UIPinchGestureRecognizer Oluşturma:
+Gesture Recognizer, hedef bir aksiyonu (metodu) çağırır.
+
+target: Gesture hareketinin tetikleyeceği sınıf.
+
+action: Kıstırma hareketini işlemek için çağrılan metod.
+
+Gesture'ı Bir Görünümde Kullanma:
+Gesture Recognizer, bir UIView veya alt sınıflarına (örneğin UIImageView) eklenir.
+isUserInteractionEnabled = true ayarı, UIView'ın kullanıcı etkileşimlerini algılayabilmesi için önemlidir.
+
+sender.scale:
+Kıstırma hareketinin ölçeğini temsil eder. Varsayılan değeri 1.0'dır.
+Bu değeri her hareket sırasında uygulayarak görünümün boyutunu dinamik olarak değiştirebilirsiniz.
+sender.scale = 1.0 ile hareketi sıfırlayarak sürekli büyüme/küçülme engellenir.
+
+Kullanım Alanları
+Fotoğraf yakınlaştırma/uzaklaştırma: Galerilerde görüntüleri büyütüp küçültmek için.
+Harf veya obje boyutlandırma: Tasarım veya oyun uygulamalarında element boyutlandırma için.
+Etkileşimli kullanıcı arayüzleri: Haritalar, çizim uygulamaları veya özel UI öğeleri.
