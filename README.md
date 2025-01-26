@@ -59,3 +59,21 @@ Kullanım Alanları
 Fotoğraf düzenleme uygulamaları: Fotoğrafları döndürme ve yeniden boyutlandırma.
 Oyunlar: Oyun içi nesnelerin manipülasyonu.
 UI/UX tasarımları: Döndürülebilir veya etkileşimli bileşenler.
+
+
+UISwipeGestureRecognizer, Swift'te bir view üzerinde yapılan belirli bir yöndeki kaydırma (swipe) hareketlerini algılamak için kullanılır. Bu gesture genellikle ekranlarda sayfa değiştirme, menü açma veya kapatma gibi işlemler için tercih edilir.
+
+Açıklamalar
+Gesture Tanımlama:
+UISwipeGestureRecognizer bir hedef ve bir aksiyon ile oluşturulur.
+
+target: Gesture hareketini işleyecek sınıf (genellikle self).
+
+action: Gesture algılandığında tetiklenecek metod.
+
+Yön Belirleme:
+direction özelliği kullanılarak gesture’ın algılayacağı yön belirtilir. Varsayılan yön .right (sağa doğru kaydırma) olarak ayarlanmıştır.
+Diğer yönler: .left, .up, .down.
+
+Gesture'ı Bir View'e Eklemek:
+Gesture, hangi view üzerinde çalışmasını istiyorsanız o view'e eklenir (view.addGestureRecognizer(...)).
