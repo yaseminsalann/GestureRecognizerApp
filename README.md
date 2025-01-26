@@ -98,3 +98,25 @@ Sürüklenebilir Nesneler:Kullanıcının bir nesneyi ekran üzerinde istediği 
 Oyunlar:Karakter kontrolü veya nesne hareketleri için.
 Animasyonlar:Kullanıcı hareketlerini taklit eden özel animasyon efektleri.
 Scroll veya Panning:İçerik kaydırma veya büyük bir alanı ekranda gezmek için.
+
+UILongPressGestureRecognizer, Swift'te bir view üzerinde uzun süre basılı tutma (long press) hareketini algılamak için kullanılır. Bu gesture genellikle bir eylemi tetiklemek (örneğin, menü açmak, bir öğeyi seçmek ya da düzenleme moduna geçmek) için kullanılır.
+Açıklamalar
+minimumPressDuration:
+Kullanıcının view üzerinde ne kadar süre basılı tutması gerektiğini belirler. Varsayılan değer 0.5 saniyedir.
+longPressGesture.minimumPressDuration = 2.0 ile bu süre 2 saniye olarak ayarlanabilir.
+
+state Özelliği:
+Gesture'ın durumunu belirtir:
+.began: Kullanıcı uzun basma hareketine başladı.
+
+.changed: Kullanıcı parmağını hareket ettiriyor ancak hala basılı tutuyor.
+
+.ended: Kullanıcı parmağını kaldırdı (gesture tamamlandı).
+
+Gesture'ın Tanımlandığı View:Gesture'ın çalışacağı bir view belirlenmelidir ve bu view'in isUserInteractionEnabled özelliği true olmalıdır (varsayılan olarak true'dur).
+
+Kullanım Alanları
+Seçim İşlemleri:Uzun basma ile bir öğeyi seçmek veya düzenleme moduna geçmek.
+Menü Açma:Uzun basma hareketi ile bir menü veya eylem listesi açmak.
+Etkileşimli Animasyonlar:Uzun basma hareketiyle görsel efektler veya geçişler başlatmak.
+Sürükleme:Uzun süre basılı tutarak bir öğeyi sürüklemek.
