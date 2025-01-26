@@ -40,3 +40,22 @@ Kullanım Alanları
 Fotoğraf yakınlaştırma/uzaklaştırma: Galerilerde görüntüleri büyütüp küçültmek için.
 Harf veya obje boyutlandırma: Tasarım veya oyun uygulamalarında element boyutlandırma için.
 Etkileşimli kullanıcı arayüzleri: Haritalar, çizim uygulamaları veya özel UI öğeleri.
+
+UIRotationGestureRecognizer, Swift'te iki parmakla yapılan döndürme hareketlerini algılamak için kullanılır. Genellikle, görüntüleri veya diğer görsel öğeleri döndürmek gibi uygulamalarda kullanılır.
+
+Açıklamalar
+UIRotationGestureRecognizer Tanımlama:
+UIRotationGestureRecognizer, hedef aksiyon (metod) ve hedef nesneyle (target) ilişkilendirilir.
+sender.rotation: Kullanıcının döndürme açısını temsil eder (radyan cinsinden).
+
+Dönüşü Uygulama:
+view.transform.rotated(by:): Döndürme işlemi, mevcut dönüş açısına göre güncellenir.
+sender.rotation = 0: Gesture'ın her hareket sonrası sıfırlanması sağlanır, böylece döndürme işlemi birikmez.
+
+isUserInteractionEnabled:
+Gesture'ların çalışabilmesi için ilgili görünümün isUserInteractionEnabled özelliği true olmalıdır.
+
+Kullanım Alanları
+Fotoğraf düzenleme uygulamaları: Fotoğrafları döndürme ve yeniden boyutlandırma.
+Oyunlar: Oyun içi nesnelerin manipülasyonu.
+UI/UX tasarımları: Döndürülebilir veya etkileşimli bileşenler.
