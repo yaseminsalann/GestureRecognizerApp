@@ -153,6 +153,28 @@ class ViewController: UIViewController {
     }
     
     @IBAction func screenEdgePanGestureRecognizerButton(_ sender: Any) {
+        // Ekranın arka planını ayarla
+        view.backgroundColor = .white
+
+        // UIScreenEdgePanGestureRecognizer oluştur ve ayarla
+        let edgePanGesture = UIScreenEdgePanGestureRecognizer(target: self, action: #selector(handleEdgePan(_:)))
+        edgePanGesture.edges = .left // Sol kenardan algıla
+        view.addGestureRecognizer(edgePanGesture)
+        /*Edges Özelliği:
+         edges parametresi, hangi kenarın gesture hareketini algılayacağını belirtir:
+         .left: Sol kenar.
+         .right: Sağ kenar.
+         .top: Üst kenar.
+         .bottom: Alt kenar.
+         Örneğin, sağ kenardan algılamak için edgePanGesture.edges = .right ayarlanabilir.
+         Hareket Durumu:
+         Gesture recognizer'ın durumunu kontrol etmek için sender.state kullanılır:
+         .began: Gesture başladı.
+         .changed: Kullanıcı sürüklemeye devam ediyor.
+         .recognized veya .ended: Gesture tamamlandı.
+         Kullanılabilirlik:
+         Bu gesture yalnızca ekranın belirli bir kenarından başlatılan hareketleri algılar. Diğer alanlarda bu hareket algılanmaz.
+         */
     }
     
     @objc func changeImage() {
@@ -223,6 +245,11 @@ class ViewController: UIViewController {
                 print("Uzun basma sona erdi!")
             }
         }
-
+    @objc func handleEdgePan(_ sender: UIScreenEdgePanGestureRecognizer) {
+           if sender.state == .recognized {
+               print("Ekranın sol kenarından sürükleme algılandı!")
+               // Burada istediğiniz işlemi gerçekleştirin
+           }
+       }
 }
 
