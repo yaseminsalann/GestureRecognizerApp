@@ -14,7 +14,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var myLabel: UILabel!
     
     var isSakura = true
-    
+    var draggableView: UIView!
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -106,6 +106,25 @@ class ViewController: UIViewController {
     }
     
     @IBAction func panGestureRecognizerButton(_ sender: Any) {
+        // Sürüklenebilir bir view oluştur
+        draggableView = UIView(frame: CGRect(x: 100, y: 100, width: 100, height: 100))
+        draggableView.backgroundColor = .blue
+        view.addSubview(draggableView)
+
+        // UIPanGestureRecognizer oluştur ve ekle
+        let panGesture = UIPanGestureRecognizer(target: self, action: #selector(handlePan(_:)))
+        draggableView.addGestureRecognizer(panGesture)
+        /*
+         UIPanGestureRecognizer Tanımlama:
+         UIPanGestureRecognizer, sürükleme hareketlerini algılamak için kullanılır.
+         translation(in:): Sürükleme hareketindeki yer değişimini (x ve y) belirtir.
+         sender.setTranslation(.zero, in:): Yeni çeviri değerini sıfırlayarak view'in birikimli hareket etmesini engeller.
+         View’in Sürüklenebilirliği:
+         draggableView.isUserInteractionEnabled = true özelliği, sürükleme işlemini mümkün kılar. Ancak UIView için bu özellik varsayılan olarak zaten truedur.
+         Hareketin Sürekli Güncellenmesi:
+         sender.translation(in:) her hareket ettiğinde, kullanıcının o anki sürükleme mesafesini verir.
+         Bu değer, birikim olmaması için her seferinde sıfırlanır.
+         */
     }
     
     @IBAction func longPressGestureRecognizerButton(_ sender: Any) {
@@ -154,6 +173,23 @@ class ViewController: UIViewController {
             print("Sola kaydırma algılandı!")
         default:
             break
+        }}
+        @objc func handlePan(_ sender: UIPanGestureRecognizer) {
+            guard let draggedView = sender.view else { return }
+            let translation = sender.translation(in: view)
+
+            // Yeni pozisyonu hesapla
+            var newX = draggedView.center.x + translation.x
+            var newY = draggedView.center.y + translation.y
+
+            // Ekran sınırlarını kontrol et
+            newX = max(draggedView.bounds.width / 2, min(view.bounds.width - draggedView.bounds.width / 2, newX))
+            newY = max(draggedView.bounds.height / 2, min(view.bounds.height - draggedView.bounds.height / 2, newY))
+
+            // View'i sınırlar içinde hareket ettir
+            draggedView.center = CGPoint(x: newX, y: newY)
+            sender.setTranslation(.zero, in: view)
         }
+
 }
 
